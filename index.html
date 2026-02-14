@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>decoding material culture, claudio c. sidoti</title>
-    <link rel="icon" type="image/png" href="favicon.png.png?v=1"> 
+    <link rel="icon" type="image/png" href="favicon.png?v=1"> 
     <style>
         /* Reset e Variabili */
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -16,10 +16,13 @@
             --quote-bg: #f4f1ea;
             --top-bar-bg: #1a1a1a;
             --top-bar-text: #fdfcf8;
+            /* Font Gothic Sans per titoli e UI */
+            --sans-font: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --serif-font: 'Georgia', 'Times New Roman', serif;
         }
 
         body {
-            font-family: 'Georgia', 'Times New Roman', serif;
+            font-family: var(--serif-font);
             line-height: 1.7;
             color: var(--text-color);
             background-color: var(--bg-color);
@@ -29,21 +32,19 @@
         .top-bar {
             background-color: var(--top-bar-bg);
             color: var(--top-bar-text);
-            padding: 10px 20px;
+            padding: 12px 20px;
             text-align: center;
-            font-family: 'Helvetica', 'Arial', sans-serif;
-            letter-spacing: 1.5px;
+            font-family: var(--sans-font);
+            letter-spacing: 2px;
             text-transform: uppercase;
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
-        .top-bar .main-label { display: block; font-size: 0.75rem; font-weight: bold; }
-        .top-bar .sub-label { display: block; font-size: 0.55rem; opacity: 0.8; margin-top: 2px; }
+        .top-bar .main-label { display: block; font-size: 0.7rem; font-weight: 700; }
+        .top-bar .sub-label { display: block; font-size: 0.5rem; opacity: 0.7; margin-top: 3px; }
 
-        /* Layout principale */
         .container {
             max-width: 850px; 
             margin: 0 auto;
@@ -53,23 +54,26 @@
         header {
             border-bottom: 2px solid var(--text-color);
             margin-bottom: 3rem;
-            padding-bottom: 1rem;
+            padding-bottom: 1.5rem;
             text-align: center;
         }
 
+        /* TITOLONE UPPERCASE GOTHIC */
         h1 {
-            font-size: 2.5rem;
-            font-weight: normal;
-            line-height: 1.2;
-            margin-bottom: 0.5rem;
+            font-family: var(--sans-font);
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: -1px; /* Look compatto tipico del Gothic moderno */
         }
 
         .subtitle {
             font-style: italic;
             color: var(--accent-color);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
+            letter-spacing: 0;
         }
 
         h2 {
@@ -77,28 +81,21 @@
             margin: 2.5rem 0 1rem 0;
             border-left: 4px solid var(--text-color);
             padding-left: 1rem;
-            clear: both; /* Impedisce sovrapposizioni */
+            clear: both;
         }
 
-        /* --- STILE IMMAGINI (Corretto per alte risoluzioni) --- */
+        /* IMMAGINI */
         .img-float {
-            width: 400px !important; /* Forza la larghezza */
-            height: 400px !important; /* Forza l'altezza quadrata */
+            width: 400px !important;
+            height: 400px !important;
             max-width: 100%;
-            object-fit: cover; /* Taglia l'eccesso senza deformare */
+            object-fit: cover;
             margin-bottom: 1rem;
             display: block;
         }
 
-        .img-left {
-            float: left;
-            margin-right: 2rem;
-        }
-
-        .img-right {
-            float: right;
-            margin-left: 2rem;
-        }
+        .img-left { float: left; margin-right: 2rem; }
+        .img-right { float: right; margin-left: 2rem; }
 
         p {
             margin-bottom: 1.5rem;
@@ -110,8 +107,8 @@
             background-color: var(--quote-bg);
             border-top: 1px solid var(--border-color);
             border-bottom: 1px solid var(--border-color);
-            margin: 2.5rem 0;
-            padding: 2.5rem;
+            margin: 3rem 0;
+            padding: 3rem;
             text-align: center;
             clear: both;
         }
@@ -123,82 +120,74 @@
             line-height: 1.4;
         }
 
-        /* Nuovi stili per il Footer Interattivo */
+        /* FOOTER GOTHIC SANS */
         footer {
             margin-top: 5rem;
-            border-top: 1px solid var(--border-color);
-            background-color: var(--top-bar-bg); /* Stesso nero della top bar */
+            background-color: var(--top-bar-bg);
             color: var(--top-bar-text);
-            transition: all 0.3s ease;
+            font-family: var(--sans-font);
         }
 
         summary {
-            list-style: none; /* Rimuove il triangolino standard */
-            padding: 1.5rem;
+            list-style: none;
+            padding: 1.8rem;
             cursor: pointer;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 3px; /* Spaziatura elegante */
             text-transform: uppercase;
             text-align: center;
             outline: none;
-            user-select: none;
         }
 
-        summary::-webkit-details-marker { display: none; } /* Per Safari */
+        summary::-webkit-details-marker { display: none; }
 
-        .arrow {
-            display: inline-block;
-            margin-left: 10px;
-            transition: transform 0.3s ease;
-        }
-
-        details[open] .arrow {
-            transform: rotate(180deg);
-        }
+        .arrow { display: inline-block; margin-left: 8px; font-size: 0.9rem; transition: transform 0.3s; }
+        details[open] .arrow { transform: rotate(180deg); }
 
         .footer-content {
-            padding: 0 2rem 2rem;
-            max-width: 600px;
+            padding: 0 2rem 2.5rem;
+            max-width: 550px;
             margin: 0 auto;
             text-align: center;
             animation: fadeIn 0.4s ease;
         }
 
         .bio p {
-            font-size: 0.95rem !important;
-            line-height: 1.6;
-            color: rgba(255,255,255,0.8);
-            text-align: center;
-            margin-bottom: 1.5rem;
-            font-family: 'Helvetica', sans-serif;
+            font-family: var(--sans-font) !important;
+            font-size: 0.85rem !important;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 2rem;
             text-transform: none;
-            letter-spacing: 0;
+            text-align: center;
+            letter-spacing: 0.02em;
         }
 
         .contact-button {
             display: inline-block;
-            padding: 10px 25px;
-            border: 1px solid var(--top-bar-text);
+            padding: 12px 30px;
+            border: 1px solid rgba(255,255,255,0.3);
             color: var(--top-bar-text);
             text-decoration: none;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
+            letter-spacing: 2px;
+            transition: 0.3s;
         }
 
-        .contact-button:hover {
-            background-color: var(--top-bar-text);
+        .contact-button:hover { 
+            background-color: var(--top-bar-text); 
             color: var(--top-bar-bg);
+            border-color: var(--top-bar-text);
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
 
         /* Responsive */
         @media (max-width: 850px) {
+            h1 { font-size: 2.2rem; letter-spacing: -0.5px; }
             .img-float {
                 width: 100% !important;
                 height: auto !important;
@@ -206,8 +195,8 @@
                 float: none;
                 margin: 0 0 1.5rem 0;
             }
-            h1 { font-size: 1.8rem; }
-            .container { padding: 2rem 1rem; }
+            .container { padding: 3rem 1.5rem; }
+            p { text-align: left; }
         }
     </style>
 </head>
@@ -220,7 +209,7 @@
 
 <div class="container">
     <header>
-        <h1>Unsettled style</h1>
+        <h1>Unsettled Style</h1>
         <p class="subtitle">New design trends as fight-or-flight responses to socio-political unrest</p>
     </header>
 
@@ -234,56 +223,4 @@
 
         <p>A decade ago, within literary-focused digital spaces emerged <i>Dark Academia</i>, an austere, elegant aesthetic that commodifies intellectualism and its promise of forbidden authority. Just like academia poses as a placeholder of institutional hegemony for new, diverse generations, this style can accommodate intercultural and other subcultural codes without losing its polish.</p>
 
-        <p>Through consumer habits, <i>Dark Academia</i> channels a need for elevation and meaning that education has ceased providing. As colleges lose relevance in the economy of power, the style of a pre-digital scholar can be worn to retroactively secure an elite place in the long-lost apex of Western institutions. Furthermore, by staging this will to power as self-sacrifice, <i>Dark Academia</i> bypasses the moral concerns inherent to the social progressivism of the 2010s.</p>
-
-        <blockquote>
-            <p><em>“Outdated dogmas are fetishised as erotics.”</em></p>
-        </blockquote>
-
-        <p>In a world of chaotic, hyper-colored individualism, head-to-toe dark neutrals are like priest cassocks. They signal niche belonging and devotion to a quest, reframing community as a luxury. But their relaxed reinvention of such conservative cuts reveals the indoors, the unregulated everyday, as a primary setting for this display of commitment.</p>
-
-        <p>Materials like wool, cotton, linen, corduroy, wood, aged metal mean depth and quality without drawing attention. This aesthetic is middle-class, not aristocratic revival. Shiny silk, velveteen or elaborate brocade are sparingly used. Feminine garments tend toward empowered masculinization, and are otherwise modest, enhancing the appeal and value of what is hidden. Accessories and decor serve as mementos: a locket, a Greek classical bust are private shrines to tradition.</p>
-
-        <h2><i>Old Money</i>, an institutional Arcadia</h2>
-        <img src="tuafoto2.jpg" alt="Old Money style" class="img-float img-right">
-
-        <p>Born a few years later than the pan-Western <i>Dark Academia</i>, <i>Old Money</i> has a decidedly American undertone. In the country of self-made men, where an unpredictable market prevents the crystallization of proper social classes, new socio-political instability evokes the Arcadia of inherited wealth as a gateway to a predictable future.</p>
-
-        <blockquote>
-            <p><em>"Old Money offers an aesthetic fulfilment to what self-help mentality cannot promise, a successful birth."</em></p>
-        </blockquote> 
-        
-        <p>Thereby both renouncing and reaffirming the power of individualism. While <i>Dark Academia</i> speaks peer group language and implies election by worth, <i>Old Money</i> evokes a nostalgia for family structures as a source of safety, comfort and long-lasting relationships, which is both regressive and conservative of precarious generations. The South, far from being a gothic scenario of cultural guilt, is brought back to life as a place of leisure, slowness and innocence. As a favourite of <i>Old Money</i>, white is more than a color. It’s a promise.</p>
-
-        <p>This vision of purity is sustained by linen, cotton, pique, cashmere, along with a pastel and sepia tinted palette reminiscing of late ‘80s Ralph Lauren commercials. Accessories are sparse and modest: pearls rather than crystals, leather instead of lacquer. Discreet signaling of niche luxury brands with a long tradition and tailored fitting are vital signs of affiliation: a nouveau riche might not value or know how to provide such maintenance.</p>
-
-        <h2>What now?</h2>
-        <img src="tuafoto3.jpg" alt="new style" class="img-float img-left">
-
-        <p>Virality has become too frequent and short-lived to drive profits. Many customers are becoming algorithm-resistant, disenchanted with variety and novelty. The shelter of timeless style is here to stay, with a twist: <i>vintage</i> in the 2010s was a subcultural dreamscape that embraced quirkiness (polka dots, whimsical accessories, refurbished curiosities), while today’s classical new wave is essential and serious, and it’s likely to get more rigid and armor-like in response to an uncertain future: <i>power-sleek</i>, shoulderpads, thick fabrics, relaxed fits becoming structured to protect the body from a lawless society.</p>
-
-        <p>The opposite reaction to crisis is to incorporate it as aesthetics, with uniform-inspired utilitarian garments, ‘guerrilla chic’ bombers, and a lot of leather. The Middle Ages are still going to be an influence, not as blunt revivalism but rather as semiotics of power. Fatalism and hierarchies are going to drive trends based on political fragmentation and hero-worship.</p>
-
-        <p>In any case, it’s official: the times of kidcore-tech approachability are over. The goal of consultants and strategists is to go beyond the promises of progress and provide solid cultural foundations.</p>
-    </article>
-
-    <footer>
-        <details>
-            <summary>
-                © 2026 — Claudio C. Sidoti
-                <span class="arrow">↓</span>
-            </summary>
-            <div class="footer-content">
-                <div class="bio">
-                    <p>Strategist e ricercatore indipendente, si occupa di analisi dei trend e cultura materiale. Esplora le intersezioni tra estetica contemporanea, antropologia e linguaggi del brand.</p>
-                </div>
-                <div class="contact">
-                    <a href="mailto:claudio.c.sidoti@gmail.com" class="contact-button">Scrivimi</a>
-                </div>
-            </div>
-        </details>
-    </footer>
-</div>
-
-</body>
-</html>
+        <p>Through consumer habits,
