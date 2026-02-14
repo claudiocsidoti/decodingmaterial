@@ -126,18 +126,25 @@
         /* FOOTER GOTHIC SANS */
         /* Il contenitore del footer */
 /* Ripristino sfondo scuro per il footer */
+/* FOOTER NERO A TUTTA PAGINA */
 footer {
+    width: 100vw; /* Forza la larghezza totale dello schermo */
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
     margin-top: 8rem;
-    border-top: 1px solid var(--border-color);
     background-color: var(--top-bar-bg);
     color: var(--top-bar-text);
+    border-top: 1px solid rgba(255,255,255,0.1);
 }
 
-/* Titolo/Copyright nel footer (resta Uppercase) */
 summary {
     list-style: none;
     padding: 2.5rem;
     cursor: pointer;
+    font-family: 'Inter', sans-serif;
     font-size: 0.75rem;
     font-weight: 400;
     letter-spacing: 4px;
@@ -146,32 +153,50 @@ summary {
     outline: none;
 }
 
-/* LA BIO: Gothic Sans, minuscolo (normale), elegante */
+summary::-webkit-details-marker { display: none; }
+
+.arrow { display: inline-block; margin-left: 10px; transition: transform 0.3s; opacity: 0.6; }
+details[open] .arrow { transform: rotate(180deg); }
+
+.footer-content {
+    padding: 0 2rem 4rem;
+    max-width: 700px; /* Testo bio centrato e non troppo largo */
+    margin: 0 auto;
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+}
+
+/* BIO: Gothic Sans, minuscolo/normale */
 .bio p {
     font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif !important;
-    font-size: 0.8rem !important; /* Leggermente più grande per leggibilità */
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.8);
-    text-transform: none !important; /* Forza il testo a NON essere uppercase */
-    letter-spacing: 0.5px;
+    font-size: 1rem !important;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: none !important; 
+    letter-spacing: 0.3px;
     text-align: center;
     margin-bottom: 2rem;
 }
 
-/* Bottone Contatto */
 .contact-button {
     display: inline-block;
     padding: 12px 35px;
-    border: 1px solid var(--top-bar-text);
+    border: 1px solid rgba(255,255,255,0.4);
     color: var(--top-bar-text);
     text-decoration: none;
+    font-family: 'Inter', sans-serif;
     font-size: 0.65rem;
     text-transform: uppercase;
     letter-spacing: 2px;
     transition: 0.3s;
 }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+.contact-button:hover {
+    background-color: var(--top-bar-text);
+    color: var(--top-bar-bg);
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         /* Responsive */
         @media (max-width: 850px) {
