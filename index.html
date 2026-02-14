@@ -125,49 +125,50 @@
 
         /* FOOTER GOTHIC SANS */
         /* Il contenitore del footer */
+/* Ripristino sfondo scuro per il footer */
 footer {
     margin-top: 8rem;
-    border-top: 1px solid #000;
-    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
-    background-color: #fff;
+    border-top: 1px solid var(--border-color);
+    background-color: var(--top-bar-bg);
+    color: var(--top-bar-text);
 }
 
-/* Il nome cliccabile */
+/* Titolo/Copyright nel footer (resta Uppercase) */
 summary {
     list-style: none;
     padding: 2.5rem;
     cursor: pointer;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     font-weight: 400;
-    letter-spacing: 5px;
+    letter-spacing: 4px;
     text-transform: uppercase;
     text-align: center;
     outline: none;
 }
 
-/* La bio all'interno del menu */
+/* LA BIO: Gothic Sans, minuscolo (normale), elegante */
 .bio p {
-    font-family: "Inter", "Helvetica Neue", Arial, sans-serif !important;
-    font-size: 0.7rem !important;
-    line-height: 2;
-    color: #444;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif !important;
+    font-size: 1rem !important; /* Leggermente più grande per leggibilità */
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: none !important; /* Forza il testo a NON essere uppercase */
+    letter-spacing: 0.5px;
     text-align: center;
+    margin-bottom: 2rem;
 }
 
-/* Il tasto di contatto */
+/* Bottone Contatto */
 .contact-button {
     display: inline-block;
     padding: 12px 35px;
-    border: 1px solid #000;
-    color: #000;
+    border: 1px solid var(--top-bar-text);
+    color: var(--top-bar-text);
     text-decoration: none;
-    font-size: 0.6rem;
-    font-weight: 400;
+    font-size: 0.65rem;
     text-transform: uppercase;
-    letter-spacing: 3px;
-    transition: 0.4s ease;
+    letter-spacing: 2px;
+    transition: 0.3s;
 }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
