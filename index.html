@@ -17,7 +17,6 @@
             --quote-bg: #f4f1ea;
             --top-bar-bg: #1a1a1a;
             --top-bar-text: #fdfcf8;
-            /* Font Gothic Sans per titoli e UI */
             --sans-font: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
             --serif-font: 'Georgia', 'Times New Roman', serif;
         }
@@ -27,6 +26,10 @@
             line-height: 1.7;
             color: var(--text-color);
             background-color: var(--bg-color);
+            overflow-x: hidden; /* Evita glitch di scroll laterale */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         /* BARRA SUPERIORE */
@@ -49,7 +52,8 @@
         .container {
             max-width: 850px; 
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: 4rem 2rem 0 2rem; /* Rimosso padding bottom */
+            flex-grow: 1; /* Spinge il footer in fondo se il testo è corto */
         }
 
         header {
@@ -59,24 +63,22 @@
             text-align: center;
         }
 
-       /* TITOLONE UPPERCASE GOTHIC - Sottile e spaziato */
-h1 {
-    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
-    font-size: 3rem;
-    font-weight: 200; 
-    line-height: 1.1;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 12px;
-    text-align: center;
-    color: var(--text-color);
-}
+        h1 {
+            font-family: 'Inter', sans-serif;
+            font-size: 3rem;
+            font-weight: 200; 
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 12px;
+            text-align: center;
+        }
 
         .subtitle {
             font-style: italic;
             color: var(--accent-color);
             font-size: 1.1rem;
-            letter-spacing: 0;
+            text-align: center;
         }
 
         h2 {
@@ -87,7 +89,6 @@ h1 {
             clear: both;
         }
 
-        /* IMMAGINI */
         .img-float {
             width: 400px !important;
             height: 400px !important;
@@ -116,99 +117,76 @@ h1 {
             clear: both;
         }
 
-        blockquote p {
-            margin-bottom: 0;
-            font-size: 1.4rem;
-            text-align: center;
-            line-height: 1.4;
+        blockquote p { font-size: 1.4rem; text-align: center; margin-bottom: 0; }
+
+        /* FOOTER NERO FULL-WIDTH SENZA SPAZI BIANCHI */
+        footer {
+            width: 100%;
+            margin-top: 8rem;
+            background-color: var(--top-bar-bg);
+            color: var(--top-bar-text);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 0; /* Assicura che non ci sia spazio sotto */
         }
 
-        /* FOOTER GOTHIC SANS */
-        /* Il contenitore del footer */
-/* Ripristino sfondo scuro per il footer */
-/* FOOTER NERO A TUTTA PAGINA */
-footer {
-    width: 100vw; /* Forza la larghezza totale dello schermo */
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    margin-top: 8rem;
-    background-color: var(--top-bar-bg);
-    color: var(--top-bar-text);
-    border-top: 1px solid rgba(255,255,255,0.1);
-}
+        summary {
+            list-style: none;
+            padding: 2.5rem;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            text-align: center;
+            outline: none;
+        }
 
-summary {
-    list-style: none;
-    padding: 2.5rem;
-    cursor: pointer;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 400;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    text-align: center;
-    outline: none;
-}
+        summary::-webkit-details-marker { display: none; }
 
-summary::-webkit-details-marker { display: none; }
+        .arrow { display: inline-block; margin-left: 10px; transition: transform 0.3s; opacity: 0.6; }
+        details[open] .arrow { transform: rotate(180deg); }
 
-.arrow { display: inline-block; margin-left: 10px; transition: transform 0.3s; opacity: 0.6; }
-details[open] .arrow { transform: rotate(180deg); }
+        .footer-content {
+            padding: 0 2rem 4rem;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
 
-.footer-content {
-    padding: 0 2rem 4rem;
-    max-width: 700px; /* Testo bio centrato e non troppo largo */
-    margin: 0 auto;
-    text-align: center;
-    animation: fadeIn 0.5s ease;
-}
+        .bio p {
+            font-family: 'Inter', sans-serif !important;
+            font-size: 1rem !important;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: none !important; 
+            letter-spacing: 0.3px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
 
-/* BIO: Gothic Sans, minuscolo/normale */
-.bio p {
-    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif !important;
-    font-size: 1rem !important;
-    line-height: 1.8;
-    color: rgba(255, 255, 255, 0.7);
-    text-transform: none !important; 
-    letter-spacing: 0.3px;
-    text-align: center;
-    margin-bottom: 2rem;
-}
+        .contact-button {
+            display: inline-block;
+            padding: 12px 35px;
+            border: 1px solid rgba(255,255,255,0.4);
+            color: var(--top-bar-text);
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
 
-.contact-button {
-    display: inline-block;
-    padding: 12px 35px;
-    border: 1px solid rgba(255,255,255,0.4);
-    color: var(--top-bar-text);
-    text-decoration: none;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    transition: 0.3s;
-}
+        .contact-button:hover { background-color: var(--top-bar-text); color: var(--top-bar-bg); }
 
-.contact-button:hover {
-    background-color: var(--top-bar-text);
-    color: var(--top-bar-bg);
-}
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        /* Responsive */
         @media (max-width: 850px) {
-            h1 { font-size: 2.2rem; letter-spacing: -0.5px; }
-            .img-float {
-                width: 100% !important;
-                height: auto !important;
-                aspect-ratio: 1 / 1;
-                float: none;
-                margin: 0 0 1.5rem 0;
-            }
-            .container { padding: 3rem 1.5rem; }
+            h1 { font-size: 2rem; letter-spacing: 4px; }
+            .img-float { width: 100% !important; float: none; margin-right: 0; margin-left: 0; }
+            .container { padding: 3rem 1.5rem 0 1.5rem; }
             p { text-align: left; }
         }
     </style>
@@ -268,24 +246,21 @@ details[open] .arrow { transform: rotate(180deg); }
 
         <p>In any case, it’s official: the times of kidcore-tech approachability are over. The goal of consultants and strategists is to go beyond the promises of progress and provide solid cultural foundations.</p>
     </article>
-
-    <footer>
-        <details>
-            <summary>
-                © 2026 — Claudio C. Sidoti
-                <span class="arrow">↓</span>
-            </summary>
-            <div class="footer-content">
-                <div class="bio">
-                    <p>Independent strategist and researcher, specializing in trend analysis and material culture. Exploring the intersections of contemporary aesthetics, anthropology, and brand semiotics.</p>
-                </div>
-                <div class="contact">
-                    <a href="mailto:indirizzo@gmail.com" class="contact-button">Get in touch</a>
-                </div>
+</div> <footer>
+    <details>
+        <summary>
+            © 2026 — Claudio C. Sidoti <span class="arrow">↓</span>
+        </summary>
+        <div class="footer-content">
+            <div class="bio">
+                <p>Independent strategist and researcher, specializing in trend analysis and material culture. Exploring the intersections of contemporary aesthetics, anthropology, and brand semiotics.</p>
             </div>
-        </details>
-    </footer>
-</div>
+            <div class="contact">
+                <a href="mailto:indirizzo@gmail.com" class="contact-button">Get in touch</a>
+            </div>
+        </div>
+    </details>
+</footer>
 
 </body>
 </html>
