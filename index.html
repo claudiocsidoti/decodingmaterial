@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Decoding material culture</title>
+    <title>Decoding Material Culture | Branding Strategy</title>
     <style>
         /* Reset e Variabili */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --bg-color: #fdfcf8; /* Carta antica */
+            --bg-color: #fdfcf8; 
             --text-color: #1a1a1a;
-            --accent-color: #4a4a4a;
+            --accent-color: #666;
             --border-color: #e0e0e0;
             --quote-bg: #f4f1ea;
+            --top-bar-bg: #1a1a1a;
+            --top-bar-text: #fdfcf8;
         }
 
         body {
@@ -20,14 +22,41 @@
             line-height: 1.7;
             color: var(--text-color);
             background-color: var(--bg-color);
-            padding: 2rem 1rem;
+        }
+
+        /* --- NUOVA BARRA SUPERIORE --- */
+        .top-bar {
+            background-color: var(--top-bar-bg);
+            color: var(--top-bar-text);
+            padding: 10px 20px;
+            text-align: center;
+            font-family: 'Helvetica', 'Arial', sans-serif; /* Contrasto moderno */
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .top-bar .main-label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .top-bar .sub-label {
+            display: block;
+            font-size: 0.55rem;
+            opacity: 0.8;
+            margin-top: 2px;
         }
 
         /* Layout principale */
         .container {
             max-width: 750px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 4rem 2rem; /* Aumentato il padding superiore per distanziarsi dalla barra */
         }
 
         /* Header e Titoli */
@@ -67,20 +96,12 @@
             text-align: justify;
         }
 
-        em {
-            font-style: italic;
-        }
-
-        strong {
-            font-weight: bold;
-        }
-
         blockquote {
             background-color: var(--quote-bg);
             border-top: 1px solid var(--border-color);
             border-bottom: 1px solid var(--border-color);
             margin: 2.5rem 0;
-            padding: 2rem;
+            padding: 2.5rem;
             text-align: center;
         }
 
@@ -88,15 +109,17 @@
             margin-bottom: 0;
             font-size: 1.4rem;
             text-align: center;
+            line-height: 1.4;
         }
 
         /* Footer */
         footer {
             margin-top: 5rem;
             padding-top: 2rem;
+            padding-bottom: 3rem;
             border-top: 1px solid var(--border-color);
             text-align: center;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: var(--accent-color);
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -105,7 +128,7 @@
         /* Responsive */
         @media (max-width: 600px) {
             h1 { font-size: 1.8rem; }
-            .container { padding: 1rem; }
+            .container { padding: 2rem 1rem; }
             p { text-align: left; }
         }
     </style>
