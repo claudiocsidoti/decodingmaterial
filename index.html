@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>decoding material culture, claudio c. sidoti</title>
     <link rel="icon" type="image/png" href="favicon.png?v=1"> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400&display=swap" rel="stylesheet">
     <style>
         /* Reset e Variabili */
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -59,15 +60,17 @@
         }
 
         /* TITOLONE UPPERCASE GOTHIC */
-        h1 {
-            font-family: var(--sans-font);
-            font-size: 2.8rem;
-            font-weight: 800;
-            line-height: 1;
-            margin-bottom: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: -1px; /* Look compatto tipico del Gothic moderno */
-        }
+       h1 {
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+    font-size: 3rem;
+    font-weight: 200; /* Molto sottile ed elegante */
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 12px; /* Spaziatura estrema tipica dei loghi di moda */
+    text-align: center;
+    color: #000;
+}
 
         .subtitle {
             font-style: italic;
@@ -121,67 +124,51 @@
         }
 
         /* FOOTER GOTHIC SANS */
-        footer {
-            margin-top: 5rem;
-            background-color: var(--top-bar-bg);
-            color: var(--top-bar-text);
-            font-family: var(--sans-font);
-        }
+        /* Il contenitore del footer */
+footer {
+    margin-top: 8rem;
+    border-top: 1px solid #000;
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+    background-color: #fff;
+}
 
-        summary {
-            list-style: none;
-            padding: 1.8rem;
-            cursor: pointer;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 3px; /* Spaziatura elegante */
-            text-transform: uppercase;
-            text-align: center;
-            outline: none;
-        }
+/* Il nome cliccabile */
+summary {
+    list-style: none;
+    padding: 2.5rem;
+    cursor: pointer;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    text-align: center;
+    outline: none;
+}
 
-        summary::-webkit-details-marker { display: none; }
+/* La bio all'interno del menu */
+.bio p {
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif !important;
+    font-size: 0.7rem !important;
+    line-height: 2;
+    color: #444;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-align: center;
+}
 
-        .arrow { display: inline-block; margin-left: 8px; font-size: 0.9rem; transition: transform 0.3s; }
-        details[open] .arrow { transform: rotate(180deg); }
-
-        .footer-content {
-            padding: 0 2rem 2.5rem;
-            max-width: 550px;
-            margin: 0 auto;
-            text-align: center;
-            animation: fadeIn 0.4s ease;
-        }
-
-        .bio p {
-            font-family: var(--sans-font) !important;
-            font-size: 0.85rem !important;
-            line-height: 1.8;
-            color: rgba(255,255,255,0.7);
-            margin-bottom: 2rem;
-            text-transform: none;
-            text-align: center;
-            letter-spacing: 0.02em;
-        }
-
-        .contact-button {
-            display: inline-block;
-            padding: 12px 30px;
-            border: 1px solid rgba(255,255,255,0.3);
-            color: var(--top-bar-text);
-            text-decoration: none;
-            font-size: 0.65rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: 0.3s;
-        }
-
-        .contact-button:hover { 
-            background-color: var(--top-bar-text); 
-            color: var(--top-bar-bg);
-            border-color: var(--top-bar-text);
-        }
+/* Il tasto di contatto */
+.contact-button {
+    display: inline-block;
+    padding: 12px 35px;
+    border: 1px solid #000;
+    color: #000;
+    text-decoration: none;
+    font-size: 0.6rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    transition: 0.4s ease;
+}
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
 
