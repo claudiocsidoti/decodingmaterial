@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered or AI-Colonised? | Claudio C. Sidoti</title>
+    <link rel="icon" type="image/png" href="favicon.png?v=2">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-color: #fdfcf8;
+            --text-color: #1a1a1a;
+            --accent-color: #666;
+            --border-color: #e0e0e0;
+            --top-bar-bg: #1a1a1a;
+            --top-bar-text: #fdfcf8;
+            --sans-font: 'Inter', sans-serif;
+            --serif-font: 'Georgia', 'Times New Roman', serif;
+        }
+
+        body {
+            font-family: var(--serif-font);
+            line-height: 1.75;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .top-bar {
+            background: var(--top-bar-bg);
+            color: var(--top-bar-text);
+            padding: 14px 20px;
+            text-align: center;
+            font-family: var(--sans-font);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 2rem;
+        }
+
+        h1 {
+            font-family: var(--sans-font);
+            font-weight: 200;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            font-size: 2.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            font-family: var(--sans-font);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            color: var(--accent-color);
+        }
+
+        h2 {
+            margin-top: 3rem;
+            margin-bottom: 1.2rem;
+            font-family: var(--sans-font);
+            font-size: 1.4rem;
+            border-left: 3px solid var(--text-color);
+            padding-left: 1rem;
+        }
+
+        p {
+            margin-bottom: 1.4rem;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        footer {
+            margin-top: auto;
+            background: var(--top-bar-bg);
+            color: var(--top-bar-text);
+            padding: 3rem 2rem;
+            text-align: center;
+            font-family: var(--sans-font);
+        }
+
+        .footer-small {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 800px) {
+            h1 { font-size: 2rem; letter-spacing: 3px; }
+            .container { padding: 3rem 1.5rem; }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="top-bar">
+    AI-Powered or AI-Colonised?
+</div>
+
+<div class="container">
+
+    <header>
+        <h1>AI-Powered or AI-Colonised?</h1>
+        <p class="subtitle">Branding as the arbiter of meaningful friction</p>
+    </header>
+
+    <article>
+
+        <p>
+            AI is revolutionizing the fashion and design industry across the entire supply chain. From data collection and systematization to optimized production, customer experience, and service, new possibilities are open for brands that want to invest in variety, minimize friction, and reduce expenses. At the same time, AI threatens to lower brand value in the long term—especially in luxury—by dissolving the boundaries of what makes a product distinctive and aspirational.
+        </p>
+
+        <h2>AI-powered or AI-colonised?</h2>
+
+        <p>
+            When a product or service employs artificial intelligence to the point that the original value proposition is undermined by the very means of its delivery, the good itself is downgraded to the status of vessel for algorithm performance. The means become the end, the tool becomes the product. An AI-powered product becomes just AI.
+        </p>
+
+        <p>
+            Rapid customer fatigue follows from this semiotic mismatch between an unreliable form and an offer disconnected from expectations. Preventing this cultural techno-parasitism requires two parallel moves: a deeper understanding of AI—valued most clearly through what it cannot do—and a precise, operational articulation of brand values.
+        </p>
+
+        <h2>Brand as propositional filter</h2>
+
+        <p>
+            Automation holds intrinsic value in a B2B context, where the sector of implementation is the customer. In B2C relationships, however, roles invert: the product becomes the tool, the customer becomes the creator, and individual agency re-enters the frame.
+        </p>
+
+        <p>
+            In an AI-powered culture, businesses need more than a public persona that signals value and ignites aspiration. They require a filter—one that channels propositional flow from suppliers to business to customers, while protecting the creator role of the brand itself from infiltration by its own tools. Brand becomes both narrative foil and operational boundary.
+        </p>
+
+        <h2>Meaningful friction</h2>
+
+        <p>
+            To make customers feel chosen is to secure a stable place in conversation with them. Trust is not earned by competing with increasingly sophisticated technology for purity or efficiency, but by shifting attention toward what AI lacks credibility in doing: caring about process, sustaining cultural legibility, negotiating the analog.
+        </p>
+
+        <p>
+            Branding becomes the arbiter of what can be automated, and to what degree. It determines what requires meaningful friction. The preservation of tactile archives, certified hand-making, analog co-creation in community-led workshops, stores repositioned as experiential destinations and community hubs—all demonstrate how a strong “Why” can create distinctiveness around an optimized “How”.
+        </p>
+
+    </article>
+</div>
+
+<footer>
+    © 2026 Claudio C. Sidoti
+    <div class="footer-small">
+        Independent consultant and researcher
+    </div>
+</footer>
+
+</body>
+</html>
