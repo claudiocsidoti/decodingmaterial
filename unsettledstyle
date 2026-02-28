@@ -1,1 +1,250 @@
 
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>decoding material culture, claudio c. sidoti</title>
+    <link rel="icon" type="image/png" href="favicon.png.png?v=2">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset e Variabili */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-color: #fdfcf8; 
+            --text-color: #1a1a1a;
+            --accent-color: #666;
+            --border-color: #e0e0e0;
+            --quote-bg: #f4f1ea;
+            --top-bar-bg: #1a1a1a;
+            --top-bar-text: #fdfcf8;
+            --sans-font: 'Inter', sans-serif;
+            --serif-font: 'Georgia', 'Times New Roman', serif;
+        }
+
+        body {
+            font-family: var(--serif-font);
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* BARRA SUPERIORE */
+        .top-bar {
+            background-color: var(--top-bar-bg);
+            color: var(--top-bar-text);
+            padding: 12px 20px;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            font-family: var(--sans-font);
+            text-transform: uppercase;
+            position: sticky;
+            top: 0;
+            z-index: 1200; /* Superiore a tutto */
+        }
+
+        .top-bar .labels { text-align: center; letter-spacing: 2px; }
+        .top-bar .main-label { display: block; font-size: 0.7rem; font-weight: 700; }
+        .top-bar .sub-label { display: block; font-size: 0.5rem; opacity: 0.7; margin-top: 3px; }
+
+        /* MENU HAMBURGER */
+        .menu-trigger {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 6px; /* Leggermente più distanziate per facilitare il clic */
+            width: 25px;
+            position: relative;
+            z-index: 1300; /* Sempre sopra la sidebar */
+        }
+        .menu-trigger span {
+            display: block;
+            width: 100%;
+            height: 1px;
+            background-color: var(--top-bar-text);
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* SIDEBAR (NAV) */
+        nav {
+            position: fixed;
+            top: 0;
+            left: -320px; /* Nascosto */
+            width: 300px;
+            height: 100vh;
+            background-color: var(--top-bar-bg);
+            color: var(--top-bar-text);
+            padding: 100px 40px; /* Più padding in alto per non finire sotto la barra */
+            transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            z-index: 1100;
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+            border-right: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* OVERLAY PER CHIUDERE */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            z-index: 1050;
+        }
+
+        /* LOGICA APERTURA */
+        #menu-toggle:checked ~ nav { left: 0; }
+        #menu-toggle:checked ~ .menu-overlay { opacity: 1; visibility: visible; }
+        
+        /* TRASFORMAZIONE IN X */
+        #menu-toggle:checked ~ .top-bar .menu-trigger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        #menu-toggle:checked ~ .top-bar .menu-trigger span:nth-child(2) { opacity: 0; }
+        #menu-toggle:checked ~ .top-bar .menu-trigger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        nav a {
+            color: var(--top-bar-text);
+            text-decoration: none;
+            font-family: var(--sans-font);
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.5;
+            transition: 0.3s;
+        }
+        nav a:hover { opacity: 1; padding-left: 8px; }
+
+        #menu-toggle { display: none; }
+
+        /* IL RESTO DEL CSS */
+        .container { max-width: 850px; margin: 0 auto; padding: 4rem 2rem 0 2rem; flex-grow: 1; }
+        header { border-bottom: 2px solid var(--text-color); margin-bottom: 3rem; padding-bottom: 1.5rem; text-align: center; }
+        h1 { font-family: var(--sans-font); font-size: 3rem; font-weight: 200; line-height: 1.1; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 12px; text-align: center; }
+        .subtitle { font-family: var(--sans-font); text-transform: uppercase; letter-spacing: 2px; color: var(--accent-color); font-size: 0.8rem; text-align: center; margin-bottom: 1rem; }
+        h2 { font-size: 1.6rem; margin: 3.5rem 0 1.5rem 0; border-left: 4px solid var(--text-color); text-align: left; padding-left: 1rem; clear: both; }
+        .img-float { width: 400px !important; height: 400px !important; max-width: 100%; object-fit: cover; margin-bottom: 1rem; display: block; }
+        .img-left { float: left; margin-right: 2rem; }
+        .img-right { float: right; margin-left: 2rem; }
+        p { margin-bottom: 1.5rem; font-size: 1.15rem; text-align: justify; }
+        blockquote { background-color: var(--quote-bg); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); margin: 3.5rem 0; padding: 3rem; text-align: center; clear: both; }
+        blockquote p { font-size: 1.4rem; text-align: center; margin-bottom: 0; line-height: 1.4; font-style: italic; }
+        footer { width: 100%; margin-top: 8rem; background-color: var(--top-bar-bg); color: var(--top-bar-text); border-top: 1px solid rgba(255,255,255,0.1); }
+        summary { list-style: none; padding: 2.5rem; cursor: pointer; font-family: var(--sans-font); font-size: 0.75rem; font-weight: 400; letter-spacing: 4px; text-transform: uppercase; text-align: center; outline: none; }
+        summary::-webkit-details-marker { display: none; }
+        .arrow { display: inline-block; margin-left: 10px; transition: transform 0.3s; opacity: 0.6; }
+        details[open] .arrow { transform: rotate(180deg); }
+        .footer-content { padding: 0 2rem 4rem; max-width: 700px; margin: 0 auto; text-align: center; animation: fadeIn 0.5s ease; }
+        .bio p { font-family: var(--sans-font) !important; font-size: 1rem !important; line-height: 1.8; color: rgba(255, 255, 255, 0.7); text-transform: none !important; letter-spacing: 0.3px; text-align: center; margin-bottom: 2rem; }
+        .contact-button { display: inline-block; padding: 12px 35px; border: 1px solid rgba(255,255,255,0.4); color: var(--top-bar-text); text-decoration: none; font-family: var(--sans-font); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; }
+        .contact-button:hover { background-color: var(--top-bar-text); color: var(--top-bar-bg); }
+
+        @media (max-width: 850px) {
+            h1 { font-size: 2rem; letter-spacing: 4px; }
+            .img-float { width: 100% !important; float: none; margin: 0 0 1.5rem 0; }
+            .container { padding: 3rem 1.5rem 0 1.5rem; }
+            .top-bar { grid-template-columns: auto 1fr; gap: 20px; }
+            .top-bar .labels { text-align: left; }
+        }
+    </style>
+</head>
+<body>
+
+<input type="checkbox" id="menu-toggle">
+
+<label for="menu-toggle" class="menu-overlay"></label>
+
+<nav>
+    <a href="https://claudiocsidoti.github.io/decodingmaterial/aicolonised.html">AI-powered or AI-colonized?</a>
+    <a href="#">Link 2</a>
+    <a href="#">Link 3</a>
+    <a href="#">Link 4</a>
+</nav>
+
+<div class="top-bar">
+    <label for="menu-toggle" class="menu-trigger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+    <div class="labels">
+        <span class="main-label">Decoding Material Culture</span>
+        <span class="sub-label">Branding, Culture, Strategy</span>
+    </div>
+    <div></div> </div>
+
+<div class="container">
+    <header>
+    <header>
+        <h1>Unsettled Style</h1>
+        <p class="subtitle">New design trends as fight-or-flight responses to socio-political unrest</p>
+    </header>
+
+    <article>
+        <p>By definition, trends inhabit the potential of a society. They’re aspirational during periods of political and economic expansion, defensive and escapistic in reaction to social unrest. This macro-analysis means to distinguish long-coda effects of past assets from the early signs of a new social climate.</p>
+
+        <p>Customers, now disenchanted with progress, are seeking status in the form of friction, and require long term, value-based planning to be intercepted by brands and creators alike. From <i>Dark Academia</i> to <i>Old Money</i>, to a peek into future trends, consumer habits follow a line of nostalgia and fetishization down to an armoring-up in the face of an uncertain future.</p>
+
+        <h2>Dark Academia and the decadence of institutions</h2>
+        <img src="tuafoto1.jpg" alt="Dark Academia style" class="img-float img-left">
+
+        <p>A decade ago, within literary-focused digital spaces emerged <i>Dark Academia</i>, an austere, elegant aesthetic that commodifies intellectualism and its promise of forbidden authority. Just like academia poses as a placeholder of institutional hegemony for new, diverse generations, this style can accommodate intercultural and other subcultural codes without losing its polish.</p>
+
+        <p>Through consumer habits, <i>Dark Academia</i> channels a need for elevation and meaning that education has ceased providing. As colleges lose relevance in the economy of power, the style of a pre-digital scholar can be worn to retroactively secure an elite place in the lost apex of Western institutions. Furthermore, by staging this will to power as self-sacrifice, <i>Dark Academia</i> bypasses the moral concerns inherent to the social progressivism of the 2010s.</p>
+
+        <blockquote>
+            <p>“Outdated dogmas are fetishised as erotics.”</p>
+        </blockquote>
+
+        <p>In a world of chaotic, hyper-colored individualism, head-to-toe dark neutrals are like priest cassocks. They signal niche belonging and devotion to a quest, reframing community as a luxury. But such conservative cuts are reimagined through a relaxed, comfortable fit: in the post Covid-era the indoors, the unregulated everyday, is the primary setting for this display of commitment. 
+</p>
+
+        <p>Materials like wool, cotton, linen, corduroy, wood, aged metal mean depth and quality without drawing attention. This aesthetic is middle-class, not aristocratic revival. Shiny silk, chenille or elaborate brocade are rarely used. Feminine garments tend toward empowered masculinization, and are otherwise modest, enhancing the appeal and value of what is hidden. Accessories and decor serve as mementos: a locket, a Greek classical bust are private shrines to tradition.</p>
+
+        <h2>Old Money, institutional Arcadia</h2>
+        <img src="tuafoto2.jpg" alt="Old Money style" class="img-float img-right">
+
+        <p>Born a few years later than the pan-Western <i>Dark Academia</i>, <i>Old Money</i> has a decidedly American undertone. In the country of self-made men, where an unpredictable market prevents the crystallization of proper social classes, new socio-political instability evokes the Arcadia of inherited wealth as a gateway to a predictable future.</p>
+
+          <blockquote><p><i>Old Money</i> offers an aesthetic fulfilment to what self-help mentality cannot promise, a successful birth.</p></blockquote> 
+        <p>Thereby reaffirming the power of a chipped individualism, by picturing its undoing as nothing but its final conquest. While <i>Dark Academia</i> speaks peer group language and implies election by worth, <i>Old Money</i> evokes a nostalgia for family structures as a source of safety, comfort and long-lasting relationships, which is both regressive and conservative of precarious generations. The South, far from being a gothic scenario of cultural guilt, is brought back to life as a place of leisure, slowness and innocence. As a favourite of <i>Old Money</i>, white is more than a color. It’s a promise.</p>
+
+        <p>This vision of purity is sustained by linen, cotton, pique, cashmere, along with a pastel and sepia tinted palette reminiscing of late ‘80s Ralph Lauren commercials. Accessories are sparse and modest: pearls rather than crystals, leather instead of lacquer. Discreet signaling of niche luxury brands with a long tradition and tailored fitting are vital signs of affiliation: a nouveau riche might not value or know how to provide such maintenance.</p>
+
+        <h2>What now?</h2>
+        <img src="tuafoto3.jpg" alt="future trends style" class="img-float img-left">
+
+        <p>Virality has become too frequent and short-lived to drive profits. Many customers are becoming algorithm-resistant, disenchanted with variety and novelty. The shelter of timeless style is here to stay, with a twist: vintage in the 2010s was a subcultural dreamscape that embraced quirkiness (polka dots, whimsical accessories, refurbished curiosities), while today’s classic wave is essential and serious, and it’s likely to get more rigid and armor-like in response to an uncertain future: power-sleek, shoulderpads, thick fabrics, relaxed fits becoming structured to protect the body from a lawless society.</p>
+
+        <p>The opposite reaction to crisis is to incorporate it as aesthetics, with uniform-inspired utilitarian garments, ‘guerrilla chic’ bombers, grunge accents and lots of leather. The Middle Ages are still going to be an influence, not as blunt revivalism but rather as semiotics of power. Fatalism and hierarchies are going to drive trends based on political fragmentation and hero-worship.</p>
+
+        <p>In any case, it’s official: the times of kidcore-tech approachability are over. The goal of consultants and strategists is to go beyond the promises of progress and envision solid cultural foundations.</p>
+    </article>
+</div>
+
+<footer>
+    <details>
+        <summary>
+            © 2026 Claudio C. Sidoti <span class="arrow">↓</span>
+        </summary>
+        <div class="footer-content">
+            <div class="bio">
+                <p>Independent consultant and researcher based in Turin, Italy.</p>
+            </div>
+            <div class="contact">
+                <a href="mailto:claudio.c.sidoti@gmail.com" class="contact-button">Get in touch</a>
+            </div>
+        </div>
+    </details>
+</footer>
+
+</body>
+</html>
